@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Healthy</string>
+    <string name="imc">IMC</string>
+    <string name="tmb">TMB</string>
+    <string name="pgo">PGO</string>
+    <string name="tbc">TBC</string>
+    <string name="cfc">CFC</string>
+    <string name="imc_desc">Uma das maneiras de saber se o seu peso está adequado à sua altura é calculando o Índice de Massa Corporal (IMC). O resultado dessa fórmula matemática poderá indicar, por exemplo, se você está com peso adequado, se apresenta magreza, sobrepeso ou obesidade.\n\n Para calcular do IMC, divida o seu peso (em quilos) pela sua altura (em metros) elevada ao quadrado, ou seja, altura x altura. Veja a fórmula:</string>
+    <string name="peso">Peso (kg)</string>
+    <string name="altura">Altura (cm)</string>
+    <string name="fields_message">Todos os Campos devem ser maiores que zero!</string>
+    <string name="imc_severely_low_weight">Você está muito abaixo de seu peso, procure um Nutricionista!</string>
+    <string name="imc_very_low_weight">Você está muito abaixo do seu peso, cuide-se melhor!</string>
+    <string name="imc_low_weight">Você está abaixo do seu peso favor cuide-se!</string>
+    <string name="imc_normal">Normal</string>
+    <string name="imc_high_weight">Você está acima do peso pratique exercícios físicos!</string>
+    <string name="imc_so_high_weight">Você já está ficando obeso procure se cuidar melhor!</string>
+    <string name="imc_severy_high_weight">Você está muito acima do peso procure um médico e se trate dessa gula!</string>
+    <string name="imc_extreme_weight">Você está extremamente obeso procure com urgência um médico para tratamento!</string>
+    <string name="imc_response">Imc: %1$ .2f</string>
+
+</resources>
