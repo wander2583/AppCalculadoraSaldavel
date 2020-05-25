@@ -18,5 +18,7 @@
     <string name="imc_severy_high_weight">Você está muito acima do peso procure um médico e se trate dessa gula!</string>
     <string name="imc_extreme_weight">Você está extremamente obeso procure com urgência um médico para tratamento!</string>
     <string name="imc_response">Imc: %1$ .2f</string>
+    <string name="save">Salvar</string>
+    <string name="calc_saved">Registro salvo com sucesso!</string>
 
 </resources>

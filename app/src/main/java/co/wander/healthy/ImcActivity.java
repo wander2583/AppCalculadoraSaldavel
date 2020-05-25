@@ -4,10 +4,13 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,12 +30,7 @@ public class ImcActivity extends AppCompatActivity {
         editHeight = findViewById(R.id.imc_altura);
         Button btnSend = findViewById(R.id.imc_send);
 
-        btnSend.setOnClickListener(sendListener);
-    }
-
-    private View.OnClickListener sendListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+        btnSend.setOnClickListener(v -> {
             if (!validate()) {
                 Toast.makeText(ImcActivity.this, R.string.fields_message, Toast.LENGTH_SHORT).show();
                 return;
@@ -49,16 +47,23 @@ public class ImcActivity extends AppCompatActivity {
             AlertDialog alertDialog = new AlertDialog.Builder(ImcActivity.this)
                     .setTitle(getString(R.string.imc_response, imc))
                     .setMessage(resId)
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
+                    .setNegativeButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                    .setPositiveButton(R.string.save, (dialog, which) -> {
+                        SqlHelper sqlHelper = SqlHelper.getInstance(ImcActivity.this);
+                        long calcId = sqlHelper.addItem(SqlHelper.TYPE_IMC, imc);
+
+                        if (calcId > 0)
+                            Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_LONG).show();
                     })
                     .create();
             alertDialog.show();
-        }
-    };
+
+            InputMethodManager im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(editWeight.getWindowToken(), 0);
+            im.hideSoftInputFromWindow(editHeight.getWindowToken(), 0);
+
+        });
+    }
 
     @StringRes
     private int imcResponse(double imc) {
